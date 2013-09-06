@@ -25,7 +25,7 @@ class Phone < Struct.new(:phone_string)
 private
 
   def digits
-    @digits ||= phone_string.gsub(/[^0-9]/, '').chars
+    @digits ||= phone_string.gsub(/\D+/, '').chars
   end
 
   def valid_eleven_digits_phone?
