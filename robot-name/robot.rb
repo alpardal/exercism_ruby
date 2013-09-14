@@ -2,16 +2,23 @@ class Robot
   attr_reader :name
 
   def initialize
-    @name = random_name
+    reset
   end
 
   def reset
-    @name = random_name
+    @name = name_generator.generate
   end
 
 private
 
-  def random_name
+  def name_generator
+    @generator ||= NameGenerator.new
+  end
+end
+
+class NameGenerator
+
+  def generate
     (2.times.map { LETTERS.sample } +
       3.times.map { DIGITS.sample }).join
   end
