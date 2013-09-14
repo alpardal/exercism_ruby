@@ -12,7 +12,8 @@ class Robot
 private
 
   def random_name
-    (LETTERS.sample(2) + DIGITS.sample(3)).join
+    (2.times.map { LETTERS.sample } +
+      3.times.map { DIGITS.sample }).join
   end
 
   LETTERS = ('A'..'Z').to_a
