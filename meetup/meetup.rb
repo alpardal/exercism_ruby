@@ -3,11 +3,11 @@ class Meetup
   WEEKDAYS = %w{monday tuesday wednesday thursday friday saturday sunday}
 
   def initialize(month, year)
-    @month_days = Date.new(year, month, 1)..Date.new(year, month, -1)
+    @month_days = (Date.new(year, month, 1)..Date.new(year, month, -1)).to_a
   end
 
   def teenths
-    @month_days.select {|d| (13..19).cover?(d.day) }
+    @month_days[12, 18]
   end
 
   WEEKDAYS.each do |weekday|
