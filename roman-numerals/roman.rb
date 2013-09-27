@@ -16,16 +16,16 @@ class Roman
   end
 
 private
-  def roman_letters(n, previous_letters='')
-    return previous_letters if n.zero?
+  def roman_letters(n)
+    letters = ''
 
-    FACTORS_LETTERS.keys.each do |factor|
+    FACTORS_LETTERS.each do |factor, roman|
       div, mod = n.divmod(factor)
-      if div > 0
-        letters = previous_letters + FACTORS_LETTERS[factor] * div
-        return roman_letters(mod, letters)
-      end
+      n = mod
+      letters += roman * div
     end
+
+    letters
   end
 
   FACTORS_LETTERS = {
